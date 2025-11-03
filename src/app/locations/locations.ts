@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { SupabaseService } from '../core/supabase.service';
 import { CartService, CartItem } from '../core/cart.service';
 import * as L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
+// Leaflet CSS is imported in styles.scss to avoid esbuild PNG loader issues
 
 // Fix for default marker icon issue in Leaflet
 delete (L.Icon.Default.prototype as any)._getIconUrl;
