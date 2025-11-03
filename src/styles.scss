@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Fix Leaflet image paths - images are in public/images */
+/* Use relative paths that work with base-href */
+.leaflet-container .leaflet-control-layers,
+.leaflet-container .leaflet-control-layers-toggle {
+  background-image: url('images/layers.png') !important;
+}
+
+.leaflet-retina .leaflet-control-layers,
+.leaflet-retina .leaflet-control-layers-toggle {
+  background-image: url('images/layers-2x.png') !important;
+}
