@@ -1,3 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-/* Leaflet CSS is loaded directly in index.html to avoid esbuild processing */
+/* Import Leaflet CSS - images are in public/images */
+/* Note: Image paths use relative URLs that resolve to public/images at runtime */
+@import './styles/leaflet-custom.css';
