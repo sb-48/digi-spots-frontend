@@ -1,10 +1,9 @@
 <header class="header">
   <div class="container">
-    <div class="logo">DigiSpots</div>
+    <div class="logo"><a routerLink="/" [routerLinkActiveOptions]="{exact:true}">DigiSpots</a></div>
     
     <!-- Navigation (Desktop) -->
     <nav class="nav">
-      <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
       <a routerLink="/locations" class="nav-link" routerLinkActive="active">Locations</a>
       <a routerLink="/about" class="nav-link" routerLinkActive="active">Über uns</a>
       <a routerLink="/my-bookings" class="nav-link" routerLinkActive="active" *ngIf="currentUser">Meine Buchungen</a>

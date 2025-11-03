@@ -42,16 +42,7 @@
   padding: 4rem 0;
 
   .view-controls {
-    position: sticky;
-    top: 80px; // Header height + some spacing
-    z-index: 100;
-    background: var(--color-background);
-    padding: var(--spacing-lg) 0;
     margin-bottom: 2rem;
-    border-bottom: 1px solid var(--color-border);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
 
     .tabs-container {
       display: flex;
@@ -1024,8 +1015,6 @@
 @media (min-width: 600px) and (max-width: 1024px) {
   .locations-list {
     .view-controls {
-      top: 70px; // Adjusted for mobile header
-
       .tabs-container {
         flex-wrap: nowrap;
         gap: 0.75rem;
@@ -1063,7 +1052,6 @@
 
   .locations-list {
     .view-controls {
-      top: 70px; // Adjusted for mobile header
       margin-bottom: 1.5rem;
 
       .tabs-container {
@@ -1381,7 +1369,6 @@
     padding: 2rem 0;
 
     .view-controls {
-      top: 70px; // Adjusted for mobile header
       margin-bottom: 1rem;
 
       .tabs-container {
