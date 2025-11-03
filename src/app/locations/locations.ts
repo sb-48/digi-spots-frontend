@@ -90,7 +90,7 @@ export class LocationsComponent implements OnInit {
   
   // Filter properties
   showFilterModal = false;
-  activeView: 'map' | 'list' = 'list';
+  activeView: 'map' | 'list' = 'map';
   filters = {
     availability: 'all',
     city: '',
@@ -212,6 +212,13 @@ export class LocationsComponent implements OnInit {
       this.loading = false;
       this.cdr.detectChanges();
       console.log('Partners after load:', this.partners.length);
+      
+      // Initialize map if activeView is 'map' (default view)
+      if (this.activeView === 'map') {
+        setTimeout(() => {
+          this.initializeMap();
+        }, 100);
+      }
     }
   }
 

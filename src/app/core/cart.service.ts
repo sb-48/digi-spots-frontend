@@ -20,8 +20,8 @@ export class CartService {
   private readonly STORAGE_KEY = 'digispots_cart';
   
   // Signal for reactive cart updates
-  cartItems = signal<CartItem[]>(this.loadFromStorage());
-  cartCount = signal<number>(this.getCartCount());
+  cartItems = signal<CartItem[]>([]);
+  cartCount = signal<number>(0);
   
   // Subject to notify when cart should be opened
   private openCartSubject = new Subject<void>();
@@ -29,7 +29,9 @@ export class CartService {
 
   constructor() {
     // Load cart from localStorage on init
-    this.loadFromStorage();
+    const items = this.loadFromStorage();
+    this.cartItems.set(items);
+    this.cartCount.set(items.length);
   }
 
   addToCart(item: CartItem): void {
@@ -77,11 +79,15 @@ export class CartService {
       const stored = localStorage.getItem(this.STORAGE_KEY);
       if (stored) {
         const items = JSON.parse(stored);
-        this.cartCount.set(items.length);
-        return items;
+        // Validate that items is an array
+        if (Array.isArray(items)) {
+          return items;
+        }
       }
     } catch (error) {
       console.error('Error loading cart from storage:', error);
+      // Clear corrupted data
+      localStorage.removeItem(this.STORAGE_KEY);
     }
     return [];
   }
@@ -94,9 +100,6 @@ export class CartService {
     }
   }
 
-  private getCartCount(): number {
-    return this.loadFromStorage().length;
-  }
 
   getTotalPrice(): number {
     return this.cartItems().reduce((total, item) => total + item.price_per_day, 0);
