@@ -1,0 +1,253 @@
+.pricing-page {
+  min-height: 100vh;
+}
+
+.pricing-hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 4rem 0;
+  text-align: center;
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+  }
+}
+
+.pricing-plans {
+  padding: 4rem 0;
+  background: #f8f9fa;
+
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+}
+
+.plan-card {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  position: relative;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  &.featured {
+    border: 2px solid #007bff;
+    transform: scale(1.05);
+
+    .plan-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #007bff;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.plan-header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+
+  .plan-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.5rem;
+
+    .price {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #007bff;
+    }
+
+    .period {
+      color: #666;
+      font-size: 1rem;
+    }
+  }
+}
+
+.plan-features {
+  list-style: none;
+  margin-bottom: 2rem;
+
+  li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #eee;
+    color: #666;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.pricing-faq {
+  padding: 4rem 0;
+  background: white;
+
+  h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #333;
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+}
+
+.faq-item {
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+
+  h4 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  p {
+    color: #666;
+    line-height: 1.6;
+  }
+}
+
+.btn {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  font-size: 1rem;
+
+  &-primary {
+    background: #007bff;
+    color: white;
+
+    &:hover {
+      background: #0056b3;
+    }
+  }
+
+  &-secondary {
+    background: transparent;
+    border: 2px solid #007bff;
+    color: #007bff;
+
+    &:hover {
+      background: #007bff;
+      color: white;
+    }
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .pricing-hero {
+    padding: 2rem 0;
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .pricing-plans {
+    padding: 2rem 0;
+
+    .plans-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  .plan-card {
+    padding: 1.5rem;
+
+    &.featured {
+      transform: scale(1);
+      border: 2px solid #007bff;
+    }
+
+    .plan-header {
+      h3 {
+        font-size: 1.3rem;
+      }
+
+      .plan-price .price {
+        font-size: 2.5rem;
+      }
+    }
+  }
+
+  .pricing-faq {
+    padding: 2rem 0;
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .faq-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  .faq-item {
+    padding: 1.5rem;
+
+    h4 {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .pricing-plans .plans-grid,
+  .pricing-faq .faq-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+

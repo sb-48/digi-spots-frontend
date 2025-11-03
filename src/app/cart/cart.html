@@ -1,0 +1,38 @@
+<div class="cart-content">
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-error">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="cartItems().length === 0" class="empty-cart">
+    <p>Ihr Warenkorb ist leer.</p>
+  </div>
+
+  <div *ngIf="cartItems().length > 0" class="cart-items">
+    <div *ngFor="let item of cartItems(); let i = index" class="cart-item">
+      <div class="cart-item-info">
+        <h4>{{ item.partner_name }}</h4>
+        <p class="screen-name">{{ item.screen_name }} - {{ item.screen_type }}</p>
+        <p class="location">{{ item.location }}, {{ item.city }}</p>
+        <p class="month">Monat: {{ item.selectedMonth }}</p>
+        <p class="price">€{{ item.price_per_day | number:'1.2-2' }} (für den gesamten Monat)</p>
+      </div>
+      <button class="btn-remove" (click)="removeItem(i)">✕</button>
+    </div>
+
+    <div class="cart-total">
+      <p><strong>Gesamtpreis: €{{ getTotalPrice() | number:'1.2-2' }}</strong></p>
+    </div>
+
+    <div class="cart-actions">
+      <button class="btn btn-primary btn-large" (click)="checkout()" [disabled]="isLoading">
+        <span *ngIf="!isLoading">Jetzt buchen</span>
+        <span *ngIf="isLoading">Wird verarbeitet...</span>
+      </button>
+    </div>
+  </div>
+</div>
+

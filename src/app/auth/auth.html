@@ -1,0 +1,105 @@
+<div class="auth-page">
+  <section class="auth-hero">
+    <div class="container">
+      <h1>{{ isLogin ? 'Willkommen zurück!' : 'Jetzt registrieren' }}</h1>
+      <p>{{ isLogin ? 'Melden Sie sich bei Ihrem Konto an' : 'Erstellen Sie Ihr kostenloses Konto' }}</p>
+    </div>
+  </section>
+
+  <section class="auth-form">
+    <div class="container">
+      <div class="form-wrapper">
+        <!-- Success Message -->
+        <div *ngIf="successMessage" class="alert alert-success">
+          {{ successMessage }}
+        </div>
+
+        <!-- Error Message -->
+        <div *ngIf="errorMessage" class="alert alert-error">
+          {{ errorMessage }}
+        </div>
+
+        <form (ngSubmit)="onSubmit()" #authForm="ngForm">
+          <!-- Full Name (only for registration) -->
+          <div *ngIf="!isLogin" class="form-group">
+            <label for="fullName">Vollständiger Name *</label>
+            <input 
+              type="text" 
+              id="fullName" 
+              name="fullName"
+              [(ngModel)]="formData.fullName" 
+              [required]="!isLogin"
+              placeholder="Max Mustermann"
+              class="form-control">
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">E-Mail *</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email"
+              [(ngModel)]="formData.email" 
+              required
+              email
+              placeholder="ihre@email.de"
+              class="form-control">
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label for="password">Passwort *</label>
+            <input 
+              type="password" 
+              id="password" 
+              name="password"
+              [(ngModel)]="formData.password" 
+              required
+              [minlength]="isLogin ? 0 : 6"
+              placeholder="Ihr Passwort"
+              class="form-control">
+          </div>
+
+          <!-- Confirm Password (only for registration) -->
+          <div *ngIf="!isLogin" class="form-group">
+            <label for="confirmPassword">Passwort bestätigen *</label>
+            <input 
+              type="password" 
+              id="confirmPassword" 
+              name="confirmPassword"
+              [(ngModel)]="formData.confirmPassword" 
+              [required]="!isLogin"
+              placeholder="Passwort wiederholen"
+              class="form-control">
+          </div>
+
+          <!-- Submit Button -->
+          <div class="form-actions">
+            <button 
+              type="submit" 
+              class="btn btn-primary btn-large"
+              [disabled]="!authForm.valid || isLoading || (!isLogin && formData.password !== formData.confirmPassword)">
+              <span *ngIf="!isLoading">
+                {{ isLogin ? 'Anmelden' : 'Registrieren' }}
+              </span>
+              <span *ngIf="isLoading">Wird verarbeitet...</span>
+            </button>
+          </div>
+
+          <!-- Toggle Mode -->
+          <div class="auth-toggle">
+            <p>
+              <span *ngIf="isLogin">{{ "Noch kein Konto? " }}</span>
+              <span *ngIf="!isLogin">{{ "Bereits registriert? " }}</span>
+              <a (click)="toggleMode()" class="toggle-link">
+                {{ isLogin ? 'Jetzt registrieren' : 'Zur Anmeldung' }}
+              </a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+

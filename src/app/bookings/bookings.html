@@ -1,0 +1,147 @@
+<div class="bookings-page">
+  <section class="bookings-hero">
+    <div class="container">
+      <h1>Digitale Werbefläche buchen</h1>
+      <p>Registrieren Sie sich jetzt, um Ihre Werbung auf unseren Premium-Screens zu schalten</p>
+    </div>
+  </section>
+
+  <section class="bookings-form">
+    <div class="container">
+      <div class="form-wrapper">
+        <h2>Ihre Kontaktdaten</h2>
+        
+        <form (ngSubmit)="onSubmit()" #bookingForm="ngForm">
+          <!-- Company Name -->
+          <div class="form-group">
+            <label for="companyName">Firmenname *</label>
+            <input 
+              type="text" 
+              id="companyName" 
+              name="companyName"
+              [(ngModel)]="formData.companyName" 
+              required
+              placeholder="Ihr Firmenname"
+              class="form-control">
+          </div>
+
+          <!-- First Name -->
+          <div class="form-group">
+            <label for="firstName">Vorname *</label>
+            <input 
+              type="text" 
+              id="firstName" 
+              name="firstName"
+              [(ngModel)]="formData.firstName" 
+              required
+              placeholder="Ihr Vorname"
+              class="form-control">
+          </div>
+
+          <!-- Last Name -->
+          <div class="form-group">
+            <label for="lastName">Nachname *</label>
+            <input 
+              type="text" 
+              id="lastName" 
+              name="lastName"
+              [(ngModel)]="formData.lastName" 
+              required
+              placeholder="Ihr Nachname"
+              class="form-control">
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">E-Mail *</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email"
+              [(ngModel)]="formData.email" 
+              required
+              email
+              placeholder="ihre@email.de"
+              class="form-control">
+          </div>
+
+          <!-- Phone -->
+          <div class="form-group">
+            <label for="phone">Telefonnummer *</label>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone"
+              [(ngModel)]="formData.phone" 
+              required
+              placeholder="0171 12345678"
+              class="form-control">
+          </div>
+
+          <!-- Address -->
+          <div class="form-group">
+            <label for="address">Straße & Hausnummer *</label>
+            <input 
+              type="text" 
+              id="address" 
+              name="address"
+              [(ngModel)]="formData.address" 
+              required
+              placeholder="Musterstraße 123"
+              class="form-control">
+          </div>
+
+          <!-- City & Postal Code -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="postalCode">PLZ *</label>
+              <input 
+                type="text" 
+                id="postalCode" 
+                name="postalCode"
+                [(ngModel)]="formData.postalCode" 
+                required
+                placeholder="12345"
+                class="form-control"
+                maxlength="5">
+            </div>
+
+            <div class="form-group">
+              <label for="city">Stadt *</label>
+              <input 
+                type="text" 
+                id="city" 
+                name="city"
+                [(ngModel)]="formData.city" 
+                required
+                placeholder="München"
+                class="form-control">
+            </div>
+          </div>
+
+          <!-- Success Message -->
+          <div *ngIf="submitSuccess" class="alert alert-success">
+            ✓ Vielen Dank! Ihre Registrierung war erfolgreich. Wir werden uns in Kürze bei Ihnen melden.
+          </div>
+
+          <!-- Error Message -->
+          <div *ngIf="errorMessage" class="alert alert-error">
+            ✗ {{ errorMessage }}
+          </div>
+
+          <!-- Submit Button -->
+          <div class="form-actions">
+            <button 
+              type="submit" 
+              class="btn btn-primary btn-large"
+              [disabled]="!bookingForm.valid || isSubmitting">
+              <span *ngIf="!isSubmitting">Jetzt registrieren</span>
+              <span *ngIf="isSubmitting">Wird gesendet...</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+
