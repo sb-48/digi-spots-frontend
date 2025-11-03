@@ -18,6 +18,10 @@ export const routes: Routes = [
     loadComponent: () => import('./my-bookings/my-bookings').then(m => m.MyBookingsComponent)
   },
   {
+    path: 'about',
+    loadComponent: () => import('./about/about').then(m => m.AboutComponent)
+  },
+  {
     path: 'login',
     loadComponent: () => import('./auth/auth').then(m => m.AuthComponent)
   }

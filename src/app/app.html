@@ -6,6 +6,7 @@
     <nav class="nav">
       <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
       <a routerLink="/locations" class="nav-link" routerLinkActive="active">Locations</a>
+      <a routerLink="/about" class="nav-link" routerLinkActive="active">Über uns</a>
       <a routerLink="/my-bookings" class="nav-link" routerLinkActive="active" *ngIf="currentUser">Meine Buchungen</a>
     </nav>
     
@@ -37,6 +38,7 @@
       </button>
       <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Home</a>
       <a routerLink="/locations" class="nav-link" routerLinkActive="active" (click)="closeMenu()">Locations</a>
+      <a routerLink="/about" class="nav-link" routerLinkActive="active" (click)="closeMenu()">Über uns</a>
       <a routerLink="/my-bookings" class="nav-link" routerLinkActive="active" *ngIf="currentUser" (click)="closeMenu()">Meine Buchungen</a>
       
       <!-- Logout button in burger menu (mobile/tablet only) -->
