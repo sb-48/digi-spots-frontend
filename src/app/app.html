@@ -5,6 +5,8 @@
     <!-- Navigation (Desktop) -->
     <nav class="nav">
       <a routerLink="/locations" class="nav-link" routerLinkActive="active">Locations</a>
+      <a routerLink="/energieoptimizer" class="nav-link" routerLinkActive="active">EnergieOptimizer</a>
+      <a routerLink="/werbespots" class="nav-link" routerLinkActive="active">Werbespots</a>
       <a routerLink="/about" class="nav-link" routerLinkActive="active">Über uns</a>
       <a routerLink="/my-bookings" class="nav-link" routerLinkActive="active" *ngIf="currentUser">Meine Buchungen</a>
     </nav>
@@ -35,8 +37,9 @@
           <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
-      <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Home</a>
       <a routerLink="/locations" class="nav-link" routerLinkActive="active" (click)="closeMenu()">Locations</a>
+      <a routerLink="/energieoptimizer" class="nav-link" routerLinkActive="active" (click)="closeMenu()">EnergieOptimizer</a>
+      <a routerLink="/werbespots" class="nav-link" routerLinkActive="active" (click)="closeMenu()">Werbespots</a>
       <a routerLink="/about" class="nav-link" routerLinkActive="active" (click)="closeMenu()">Über uns</a>
       <a routerLink="/my-bookings" class="nav-link" routerLinkActive="active" *ngIf="currentUser" (click)="closeMenu()">Meine Buchungen</a>
       

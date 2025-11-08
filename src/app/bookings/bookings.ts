@@ -38,6 +38,7 @@ export class BookingsComponent {
       const { data, error } = await this.supabase.getClient()
         .from('bookings')
         .insert({
+          partner_id: null,
           customer_name: `${this.formData.firstName} ${this.formData.lastName}`,
           customer_email: this.formData.email,
           customer_phone: this.formData.phone,
@@ -47,11 +48,12 @@ export class BookingsComponent {
           screen_id: null, // Will be set when selecting a screen
           start_time: new Date().toISOString(),
           end_time: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(), // 24 hours later
+          status: 'pending',
           total_price: 0,
+          currency: 'EUR',
+          payment_status: 'pending',
           notes: `Company: ${this.formData.companyName}`
-        })
-        .select()
-        .single();
+        });
 
       if (error) throw error;
 

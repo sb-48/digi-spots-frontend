@@ -10,6 +10,10 @@ export const routes: Routes = [
     loadComponent: () => import('./locations/locations').then(m => m.LocationsComponent)
   },
   {
+    path: 'energieoptimizer',
+    loadComponent: () => import('./energieoptimizer/energieoptimizer').then(m => m.EnergieOptimizerComponent)
+  },
+  {
     path: 'bookings',
     loadComponent: () => import('./bookings/bookings').then(m => m.BookingsComponent)
   },
@@ -20,6 +24,10 @@ export const routes: Routes = [
   {
     path: 'about',
     loadComponent: () => import('./about/about').then(m => m.AboutComponent)
+  },
+  {
+    path: 'werbespots',
+    loadComponent: () => import('./advertising/advertising').then(m => m.AdvertisingComponent)
   },
   {
     path: 'login',

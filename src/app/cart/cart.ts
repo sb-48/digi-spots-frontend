@@ -77,8 +77,7 @@ export class CartComponent {
       // Insert all bookings
       const { data, error } = await this.supabase.getClient()
         .from('bookings')
-        .insert(bookings)
-        .select();
+        .insert(bookings);
 
       if (error) {
         throw error;
