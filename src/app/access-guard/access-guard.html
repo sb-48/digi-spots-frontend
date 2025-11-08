@@ -1,0 +1,18 @@
+<div class="guard-wrapper">
+  <div class="guard-card">
+    <h1>Zugang geschützt</h1>
+    <p>Bitte geben Sie das Passwort ein, um die Seite aufzurufen.</p>
+    <form (ngSubmit)="onSubmit()" class="guard-form">
+      <input
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        placeholder="Passwort"
+        autocomplete="current-password"
+        required
+      />
+      <button type="submit">Freischalten</button>
+    </form>
+    <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </div>
+</div>

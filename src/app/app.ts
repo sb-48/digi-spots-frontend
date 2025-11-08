@@ -6,11 +6,15 @@ import { CartComponent } from './cart/cart';
 import { SupabaseService } from './core/supabase.service';
 import { User } from '@supabase/supabase-js';
 import { Subscription } from 'rxjs';
+import { AccessGuardComponent } from './access-guard/access-guard';
+import { environment } from '../environments/environment';
+
+const ACCESS_STORAGE_KEY = 'digispots-access-granted';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule, CartComponent],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule, CartComponent, AccessGuardComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -18,6 +22,8 @@ export class App implements OnInit, OnDestroy {
   protected readonly title = signal('mein-projekt');
   protected readonly isMenuOpen = signal(false);
   protected openCartModal = false;
+  protected readonly hasAccess = signal(false);
+  protected readonly guardError = signal('');
   currentUser: User | null = null;
   private cartSubscription?: Subscription;
 
@@ -31,6 +37,11 @@ export class App implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    const storedAccess = localStorage.getItem(ACCESS_STORAGE_KEY);
+    if (storedAccess === 'true') {
+      this.hasAccess.set(true);
+    }
+
     // Check initial auth state
     this.checkAuthState();
     
@@ -72,5 +83,15 @@ export class App implements OnInit, OnDestroy {
 
   closeCart() {
     this.openCartModal = false;
+  }
+
+  handlePasswordSubmit(password: string) {
+    if (password === environment.guardPassword) {
+      this.hasAccess.set(true);
+      this.guardError.set('');
+      localStorage.setItem(ACCESS_STORAGE_KEY, 'true');
+    } else {
+      this.guardError.set('Falsches Passwort, bitte erneut versuchen.');
+    }
   }
 }
